@@ -1,0 +1,11 @@
+Package: QICpack
+Type: Package
+Title: Calculates QIC (Pan 2001) for models run in the package geepack
+Version: 0.9
+Date: 2012-12-10
+Author: Daniel J. Hocking
+Maintainer: Daniel J. Hocking <dhocking@unh.edu>
+Description: This package contains the function 'qic', which calculates Pan's (2001) quasi likelihood information criteria (QIC) for models generated from the gee pack R package. The package also contains a function 'qictab' that compares a list of geeglm models from geepack and calculates delta QIC, QIC model weights, and cumulative model weights. 
+License: GPL (>= 3)
+URL: http://github.com/djhocking
+Depends: MASS, geepack
