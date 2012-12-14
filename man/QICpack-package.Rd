@@ -3,12 +3,10 @@
 \alias{QICpack}
 \docType{package}
 \title{
-What the package does (short line)
-Package for calculating QIC (Pan 2001)
+Model selection for generalized estimating equations using QIC
 }
 \description{
-More about what it does (maybe more than one line)
-Package contains functions to calculate QIC and compare generalized estimating equation models based on QIC.
+Package contains functions to calculate QIC (Pan 2001) and compare generalized estimating equation models based on QIC.
 }
 \details{
 \tabular{ll}{
