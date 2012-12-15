@@ -1,20 +1,22 @@
-library(geepack)
+setwd('/Users/Dan/Documents/Rpackages/git/qicpack/')
+install.packages('QICpack_0.9.tar.gz', type = 'source')
+library(QICpack)
 
 data(dietox)
 dietox$Cu = as.factor(dietox$Cu)
 mf = formula(Weight ~ Cu * (Time + I(Time^2) + I(Time^3)))
-gee1 = geeglm(mf, data = dietox, id = Pig, family = poisson, corstr = "ar1")
+gee1 = geeglm(mf, data = dietox, id = Pig, family = gaussian, corstr = "ar1")
 gee1
 summary(gee1)
 
 mf2 = formula(Weight ~ Cu * Time + I(Time^2) + I(Time^3))
-gee2 = geeglm(mf2, data = dietox, id = Pig, family = poisson, corstr = "ar1")
+gee2 = geeglm(mf2, data = dietox, id = Pig, family = gaussian, corstr = "ar1")
 summary(gee2)
 anova(gee2)
 anova(gee1, gee2)
 
 mf3 = formula(Weight ~ Cu + Time + I(Time^2))
-gee3 = geeglm(mf3, data = dietox, id = Pig, family = poisson, corstr = "ar1")
+gee3 = geeglm(mf3, data = dietox, id = Pig, family = gaussian, corstr = "ar1")
 gee3.I = update(gee3, corstr = "independence")
 gee3.Ex = update(gee3, corstr = "exchangeable")
 
@@ -51,7 +53,7 @@ dat$x3 <- rnorm(200, 0, 1)
 dat$x4 <- rnorm(200, 0, 1)
 dat$x5 <- rnorm(200, 0, 10)
 dat$x6 <- rnorm(200, 10, 1)
-fit2 <- geeglm(y ~ x1 + x2, id = id, data = dat, corstr = "ar1")
+fit2 <- geeglm(y ~ x1 + x2, id = id, data = dat, corstr = "ar1") # should be best model
 fit3 <- geeglm(y ~ x1 + x2 + x3, id = id, data = dat, corstr = "ar1")
 fit4 <- geeglm(y ~ x1 + x2 + x3 + x4, id = id, data = dat, corstr = "ar1")
 fit5 <- geeglm(y ~ x1 + x2 + x5, id = id, data = dat, corstr = "ar1")
