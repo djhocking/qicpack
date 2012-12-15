@@ -1,0 +1,201 @@
+\nonstopmode{}
+\documentclass[a4paper]{book}
+\usepackage[times,inconsolata,hyper]{Rd}
+\usepackage{makeidx}
+\usepackage[utf8,latin1]{inputenc}
+% \usepackage{graphicx} % @USE GRAPHICX@
+\makeindex{}
+\begin{document}
+\chapter*{}
+\begin{center}
+{\textbf{\huge Package `QICpack'}}
+\par\bigskip{\large \today}
+\end{center}
+\begin{description}
+\raggedright{}
+\item[Type]\AsIs{Package}
+\item[Title]\AsIs{Model selection for generalized estimating equations using QIC}
+\item[Version]\AsIs{0.9}
+\item[Date]\AsIs{2012-12-10}
+\item[Author]\AsIs{Daniel J. Hocking}
+\item[Maintainer]\AsIs{Daniel J. Hocking }\email{dhocking@unh.edu}\AsIs{}
+\item[Description]\AsIs{This package contains the function 'qic', which calculates Pan's (2001) quasi likelihood information criteria (QIC) for models generated from the gee pack R package. The package also contains a function 'qictab' that compares a list of geeglm models from geepack and calculates delta QIC, QIC model weights, and cumulative model weights.}
+\item[License]\AsIs{GPL (>= 3)}
+\item[URL]\AsIs{}\url{http://github.com/djhocking/qicpack}\AsIs{}
+\item[Depends]\AsIs{MASS, geepack, stats}
+\end{description}
+\Rdcontents{\R{} topics documented:}
+\inputencoding{utf8}
+\HeaderA{QICpack-package}{Model selection for generalized estimating equations using QIC}{QICpack.Rdash.package}
+\aliasA{QICpack}{QICpack-package}{QICpack}
+\keyword{package}{QICpack-package}
+%
+\begin{Description}\relax
+Package contains functions to calculate QIC (Pan 2001) and compare generalized estimating equation models based on QIC.
+\end{Description}
+%
+\begin{Details}\relax
+
+\Tabular{ll}{
+Package: & QICpack\\{}
+Type: & Package\\{}
+Version: & 0.9\\{}
+Date: & 2012-12-10\\{}
+License: & GPL (>= 3)\\{}
+}
+qic(model.R) calculates QIC for a single model fit with geeglm in geepack
+
+qictab(cand.set, modnames) calculates QIC values for a list of models and compares the models based on QIC.
+\end{Details}
+%
+\begin{Author}\relax
+Daniel J. Hocking
+
+Maintainer: Daniel J. Hocking <dhocking@unh.edu>
+\end{Author}
+%
+\begin{References}\relax
+Burnham, K. P. and D. R. Anderson. 2002. Model selection and multimodel inference: a practical information-theoretic approach. Second edition. Springer Science and Business Media, Inc., New York.
+Pan, W. 2001. Akaike's information criterion in generalized estimating equations. Biometrics 57:120-125.
+\end{References}
+\inputencoding{utf8}
+\HeaderA{dietox}{Toxicity data from geepack}{dietox}
+\keyword{datasets}{dietox}
+%
+\begin{Description}\relax
+Heavy metal toxicity data from geepack
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+data(dietox)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Format}
+A data frame with 861 observations on the following 7 variables.
+\begin{description}
+
+\item[\code{Weight}] a numeric vector
+\item[\code{Feed}] a numeric vector
+\item[\code{Time}] a numeric vector
+\item[\code{Pig}] a numeric vector
+\item[\code{Evit}] a numeric vector
+\item[\code{Cu}] a numeric vector
+\item[\code{Litter}] a numeric vector
+
+\end{description}
+
+\end{Format}
+%
+\begin{References}\relax
+Hojsgaard, S., U. Halekoh, and J. Yan. 2006. The R package geepack for generalized estimating equations. Journal of Statistical Software 15:1-11.
+\end{References}
+\inputencoding{utf8}
+\HeaderA{qic}{Calculates QIC (Pan 2001) for model generated using geeglm in geepack}{qic}
+\keyword{\textbackslash{}textasciitilde{}QIC}{qic}
+\keyword{\textbackslash{}textasciitilde{}GEE}{qic}
+%
+\begin{Description}\relax
+This function calculates the quasilikelihood information criteria (QIC; Pan 2001) for model generated using geeglm in geepack. The QIC is intended as an equivalent of AIC for generalized estimating equations (GEE-PA).
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+qic(model.R)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{model.R}] 
+model.R is the fitted gee model from geeglm within geepack
+
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+
+
+
+
+
+Returns QIC, log quasilikelihood, trace (eqivalent to K in AIC), px in a data frame
+\end{Value}
+%
+\begin{Author}\relax
+Daniel J. Hocking
+\end{Author}
+%
+\begin{References}\relax
+Pan, W. 2001. Akaike's information criterion in generalized estimating equations. Biometrics 57:120-125.
+\end{References}
+%
+\begin{Examples}
+\begin{ExampleCode}
+##---- Should be DIRECTLY executable !! ----
+##-- ==>  Define data, use random,
+##--	or do  help(data=index)  for the standard data sets.
+
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{qictab}{Calculates QIC (Pan 2001) for a list of fitted objects from geeglm within geepack and outputs a table relative model fits}{qictab}
+\keyword{\textbackslash{}textasciitilde{}GEE}{qictab}
+\keyword{\textbackslash{}textasciitilde{}QIC}{qictab}
+%
+\begin{Description}\relax
+Calculates QIC, delta QIC, QIC weights similiar to the aictab function within the AICcmodavg package. The function outputs a table of of the relative fit of each model in desending order.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+qictab(cand.set, modnames, sort = TRUE)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{cand.set}] 
+A list of models (candidate set) fit using geeglm from geepack
+
+\item[\code{modnames}] 
+Names of the models in the candidate set list
+
+\item[\code{sort}] 
+If TRUE sorts the output table in desending order from best model to least supported
+
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+
+
+
+
+
+Function returns a data table of model name, QIC, Log Quaislikelihood, Trace, px, delta QIC, QIC model weights, and cummulative model weight
+\end{Value}
+%
+\begin{Author}\relax
+Daniel J. Hocking <dhocking@unh.edu>
+\end{Author}
+%
+\begin{References}\relax
+Pan, W. 2001. Akaike's information criterion in generalized estimating equations. Biometrics 57:120-125.
+
+Burnham, K. P. and D. R. Anderson. 2002. Model selection and multimodel inference: a practical information-theoretic approach. Second edition. Springer Science and Business Media, Inc., New York.
+
+\end{References}
+%
+\begin{Examples}
+\begin{ExampleCode}
+##---- Should be DIRECTLY executable !! ----
+##-- ==>  Define data, use random,
+##--	or do  help(data=index)  for the standard data sets.
+
+
+\end{ExampleCode}
+\end{Examples}
+\printindex{}
+\end{document}

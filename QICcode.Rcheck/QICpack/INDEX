@@ -1,0 +1,8 @@
+QICpack-package         Model selection for generalized estimating
+                        equations using QIC
+dietox                  Toxicity data from geepack
+qic                     Calculates QIC (Pan 2001) for model generated
+                        using geeglm in geepack
+qictab                  Calculates QIC (Pan 2001) for a list of fitted
+                        objects from geeglm within geepack and outputs
+                        a table relative model fits
