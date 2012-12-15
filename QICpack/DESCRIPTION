@@ -1,6 +1,6 @@
 Package: QICpack
 Type: Package
-Title: Calculates QIC (Pan 2001) for models run in the package geepack
+Title: Model selection for generalized estimating equations using QIC
 Version: 0.9
 Date: 2012-12-10
 Author: Daniel J. Hocking

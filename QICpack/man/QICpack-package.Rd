@@ -3,12 +3,10 @@
 \alias{QICpack}
 \docType{package}
 \title{
-What the package does (short line)
-~~ package title ~~
+Model selection for generalized estimating equations using QIC
 }
 \description{
-More about what it does (maybe more than one line)
-~~ A concise (1-5 lines) description of the package ~~
+This package contains the function 'qic', which calculates Pan's (2001) quasi likelihood information criteria (QIC) for models generated from the gee pack R package. The package also contains a function 'qictab' that compares a list of geeglm models from geepack and calculates delta QIC, QIC model weights, and cumulative model weights.
 }
 \details{
 \tabular{ll}{
@@ -22,16 +20,20 @@ License: \tab What license is it under?\cr
 ~~ functions ~~
 }
 \author{
-Who wrote it
+Daniel J. Hocking <dhocking@unh.edu>
 
-Maintainer: Who to complain to <yourfault@somewhere.net>
-~~ The author and/or maintainer of the package ~~
+Maintainer: Daniel J. Hocking <dhocking@unh.edu>
 }
 \references{
-~~ Literature or other references for background information ~~
+Burnham, K. P. and D. R. Anderson. 2002. Model selection and multimodel inference: a practical information-theoretic approach. Second edition. Springer Science and Business Media, Inc., New York.
+
+Hardin, J. W. and J. M. Hilbe. 2003. Generalized estimating equations. Chapman and Hall, New York.
+
+Hojsgaard, S., U. Halekoh, and J. Yan. 2006. The R package geepack for generalized estimating equations. Journal of Statistical Software 15:1-11.
+
+Pan, W. 2001. Akaike's information criterion in generalized estimating equations. Biometrics 57:120-125.
 }
-~~ Optionally other standard keywords, one per line, from file KEYWORDS ~~
-~~ in the R documentation directory ~~
+
 \keyword{ package }
 \seealso{
 ~~ Optional links to other man pages, e.g. ~~

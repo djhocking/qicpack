@@ -1,6 +1,6 @@
 \name{qictab}
 \alias{qictab}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{
 Calculates QIC (Pan 2001) for a list of fitted objects from geeglm within geepack and outputs a table relative model fits
 }
@@ -10,7 +10,7 @@ Calculates QIC, delta QIC, QIC weights similiar to the aictab function within th
 \usage{
 qictab(cand.set, modnames, sort = TRUE)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{cand.set}{
 A list of models (candidate set) fit using geeglm from geepack
@@ -46,7 +46,6 @@ Daniel J. Hocking <dhocking@unh.edu>
 %%  ~~further notes~~
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
@@ -112,7 +111,6 @@ fit6 <- geeglm(y ~ x1 + x2 + x6, id = id, data = dat, corstr = "ar1")
 model.list <- list(fit1, fit2, fit3, fit4, fit5, fit6)
 qictab(model.list, c(1,2,3,4,5,6))
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
 \keyword{ ~kwd1 }
 \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
