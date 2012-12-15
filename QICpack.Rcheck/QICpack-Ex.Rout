@@ -1,0 +1,193 @@
+
+R version 2.15.2 (2012-10-26) -- "Trick or Treat"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: i386-apple-darwin9.8.0/i386 (32-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "QICpack"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('QICpack')
+Loading required package: MASS
+Loading required package: geepack
+> 
+> assign(".oldSearch", search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("dietox")
+> ### * dietox
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: dietox
+> ### Title: dietox dataset from geepack
+> ### Aliases: dietox
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> data(dietox)
+> ## maybe str(dietox) ; plot(dietox) ...
+> 
+> 
+> 
+> cleanEx()
+> nameEx("qic")
+> ### * qic
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: qic
+> ### Title: Calculates QIC (Pan 2001) for model generated using geeglm in
+> ###   geepack
+> ### Aliases: qic
+> ### Keywords: ~kwd1 ~kwd2
+> 
+> ### ** Examples
+> 
+> ##---- Should be DIRECTLY executable !! ----
+> ##-- ==>  Define data, use random,
+> ##--	or do  help(data=index)  for the standard data sets.
+> data(dietox)
+> dietox$Cu <- as.factor(dietox$Cu)
+> mf <- formula(Weight ~ Cu * (Time + I(Time^2) + I(Time^3)))
+> gee1 <- geeglm(mf, data = dietox, id = Pig, family = gaussian, corstr = "ar1")
+> gee1
+
+Call:
+geeglm(formula = mf, family = gaussian, data = dietox, id = Pig, 
+    corstr = "ar1")
+
+Coefficients:
+  (Intercept)           Cu2           Cu3          Time     I(Time^2) 
+ 21.879381956   0.378044313   0.030100440   2.881943713   0.612977769 
+    I(Time^3)      Cu2:Time      Cu3:Time Cu2:I(Time^2) Cu3:I(Time^2) 
+ -0.026177785  -0.208479624   0.867030465  -0.020588104  -0.097684399 
+Cu2:I(Time^3) Cu3:I(Time^3) 
+  0.002492877   0.002762335 
+
+Degrees of Freedom: 861 Total (i.e. Null);  849 Residual
+
+Scale Link:                   identity
+Estimated Scale Parameters:  [1] 48.48626
+
+Correlation:  Structure = ar1    Link = identity 
+Estimated Correlation Parameters:
+    alpha 
+0.9459492 
+
+Number of clusters:   72   Maximum cluster size: 12 
+
+> summary(gee1)
+
+Call:
+geeglm(formula = mf, family = gaussian, data = dietox, id = Pig, 
+    corstr = "ar1")
+
+ Coefficients:
+               Estimate   Std.err    Wald Pr(>|W|)    
+(Intercept)   21.879382  0.693042 996.670   <2e-16 ***
+Cu2            0.378044  0.939392   0.162    0.687    
+Cu3            0.030100  1.032033   0.001    0.977    
+Time           2.881944  0.346050  69.358   <2e-16 ***
+I(Time^2)      0.612978  0.059170 107.322   <2e-16 ***
+I(Time^3)     -0.026178  0.003089  71.809   <2e-16 ***
+Cu2:Time      -0.208480  0.653896   0.102    0.750    
+Cu3:Time       0.867030  0.586959   2.182    0.140    
+Cu2:I(Time^2) -0.020588  0.110314   0.035    0.852    
+Cu3:I(Time^2) -0.097684  0.102667   0.905    0.341    
+Cu2:I(Time^3)  0.002493  0.005566   0.201    0.654    
+Cu3:I(Time^3)  0.002762  0.005275   0.274    0.601    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+Estimated Scale Parameters:
+            Estimate Std.err
+(Intercept)    48.49   9.307
+
+Correlation: Structure = ar1  Link = identity 
+
+Estimated Correlation Parameters:
+      Estimate  Std.err
+alpha   0.9459 0.008636
+Number of clusters:   72   Maximum cluster size: 12 
+> qic(gee1)
+    QIC Log.QLik Trace  px
+1 41783   -20873 17.97 861
+> 
+> 
+> 
+> cleanEx()
+> nameEx("qictab")
+> ### * qictab
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: qictab
+> ### Title: Calculates QIC (Pan 2001) for a list of fitted objects from
+> ###   geeglm within geepack and outputs a table relative model fits
+> ### Aliases: qictab
+> 
+> ### ** Examples
+> 
+> ##---- Should be DIRECTLY executable !! ----
+> ##-- ==>  Define data, use random,
+> ##--	or do  help(data=index)  for the standard data sets.
+> library(geepack)
+> 
+> data(dietox)
+> dietox$Cu = as.factor(dietox$Cu)
+> mf = formula(Weight ~ Cu * (Time + I(Time^2) + I(Time^3)))
+> gee1 = geeglm(mf, data = dietox, id = Pig, family = gaussian, corstr = "ar1")
+> 
+> mf2 = formula(Weight ~ Cu * Time + I(Time^2) + I(Time^3))
+> gee2 = geeglm(mf2, data = dietox, id = Pig, family = gaussian, corstr = "ar1")
+> 
+> mf3 = formula(Weight ~ Cu + Time + I(Time^2))
+> gee3 = geeglm(mf3, data = dietox, id = Pig, family = gaussian, corstr = "ar1")
+> gee3.I = update(gee3, corstr = "independence")
+> gee3.Ex = update(gee3, corstr = "exchangeable")
+> 
+> model.set <- list(gee1, gee2, gee3, gee3.I, gee3.Ex)
+> mod.names <- c("gee1", "gee2", "gee3", "gee3.I", "gee3.Ex")
+> qictab(model.set, mod.names)
+    Model   QIC  LQLik Trace  px  dQIC    RelQLik      QICwt Cum.Wt
+1    gee1 41783 -20873 17.97 861   0.0  1.000e+00  1.000e+00      1
+2    gee2 41995 -20967 30.90 861 212.6  6.809e-47  6.809e-47      1
+4  gee3.I 42147 -21043 30.69 861 364.4  7.506e-80  7.506e-80      1
+5 gee3.Ex 42147 -21043 30.57 861 364.7  6.343e-80  6.343e-80      1
+3    gee3 42755 -21350 28.06 861 972.8 5.714e-212 5.714e-212      1
+> 
+> { ~kwd1 }
+~kwd1
+> { ~kwd2 }
+~kwd2
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  0.629 0.008 0.636 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')
