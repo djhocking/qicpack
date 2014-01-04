@@ -22,7 +22,7 @@ gee3.Ex = update(gee3, corstr = "exchangeable")
 
 model.set <- list(gee1, gee2, gee3, gee3.I, gee3.Ex)
 mod.names <- c("gee1", "gee2", "gee3", "gee3.I", "gee3.Ex")
-print(qictab(model.set, mod.names), digits = 3)
+qictab(model.set, mod.names)
 
 ## a function to generate a dataset
 set.seed(12345)

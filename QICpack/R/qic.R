@@ -34,12 +34,12 @@ function(model.R) {
     omegaI <- ginv(model.indep$geese$vbeta.naiv) # Omega-hat(I) via Moore-Penrose 
     Vr <- model.R$geese$vbeta
     trace.R <- sum(diag(omegaI %*% Vr))
-    px <- length(mu.R) # number non-redunant columns in design matrix
+    px <- dim(model.matrix(model.indep))[2]
     
     # QIC
     QIC <- 2*(trace.R - quasi.R)
-    #QICu <- (-2)*quasi.R + 2*px    # Approximation assuming model structured correctly
-    output <- data.frame(list(QIC, quasi.R, trace.R, px))
-    names(output) <- c('QIC', 'Log.QLik', 'Trace', 'px')
+    QICu <- (-2)*quasi.R + 2*px    # Approximation assuming model structured correctly
+    output <- data.frame(list(QIC, QICu, quasi.R, trace.R, px))
+    names(output) <- c('QIC', 'QICu', 'Log.QLik', 'Trace', 'px')
     return(output)
   }
