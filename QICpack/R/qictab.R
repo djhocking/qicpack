@@ -17,8 +17,8 @@ function(cand.set, modnames, sort = TRUE) {
   if(length(unique(Results$QIC)) != length(cand.set))
     warning("\nCheck model structure carefully as some models may be redundant\n")
   if(sort){
-    Results <- Results[order(Results[, 7]), ]
-    Results$Cum.Wt <- cumsum(Results[, 9])
+    Results <- Results[order(Results[, "dQIC"]), ]
+    Results$Cum.Wt <- cumsum(Results[, "QICwt"])
   }
   else{
     Results$Cum.Wt <- NULL
