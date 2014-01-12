@@ -5,11 +5,12 @@ function(cand.set, modnames, sort = TRUE) {
     stop("\nThe same response variable must be used for all models\n")
   Results <- NULL
   Results <- data.frame(Model = modnames)
-  qicout <- matrix(unlist(lapply(X = cand.set, FUN = qic)), length(cand.set), 4, byrow = TRUE)
+  qicout <- matrix(unlist(lapply(X = cand.set, FUN = qic)), length(cand.set), 5, byrow = TRUE)
   Results$QIC <- qicout[ , 1]
-  Results$LQLik <- qicout[ , 2]
-  Results$Trace <- qicout[ , 3]
-  Results$px <- qicout[ , 4]
+  Results$QICu <- qicout[ , 2]
+  Results$LQLik <- qicout[ , 3]
+  Results$Trace <- qicout[ , 4]
+  Results$px <- qicout[ , 5]
   Results$dQIC <- Results$QIC - min(Results$QIC)
   Results$RelQLik <- exp(-0.5 * Results$dQIC)
   Results$QICwt <- Results$RelQLik/sum(Results$RelQLik)

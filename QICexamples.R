@@ -1,5 +1,5 @@
-setwd('/Users/Dan/Documents/Rpackages/git/qicpack/')
-install.packages('QICpack_0.9.tar.gz', type = 'source')
+setwd('/Users/Dan/Documents/Rpackages/qicpack/')
+install.packages('QICpack_0.9.1.tar.gz', type = 'source')
 library(QICpack)
 
 data(dietox)
@@ -46,7 +46,7 @@ gendat <- function() {
 
 dat <- gendat()
 fit1 <- geeglm(y ~ x1, id = id, data = dat, corstr = "ar1") #,sformula = ~ x1)
-summary(fit)
+summary(fit1)
 
 # Add random variable with no relation to y
 dat$x3 <- rnorm(200, 0, 1)
