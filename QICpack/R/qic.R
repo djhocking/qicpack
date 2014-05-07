@@ -27,7 +27,7 @@ function(model.R) {
                       poisson = sum((y*log(mu.R)) - mu.R),
                       gaussian = sum(((y - mu.R)^2)/-2),
                       binomial = sum(y*log(mu.R/(1 - mu.R)) + log(1 - mu.R)),
-                      Gamma = sum(-y/(mu.R - log(mu.R))),
+                      Gamma = sum(-y/mu.R - log(mu.R)),
                       stop("Error: distribution not defined for this function"))
     
     # Trace Term (penalty for model complexity)
