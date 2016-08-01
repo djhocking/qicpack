@@ -12,3 +12,16 @@ Takes output from geepack and calculates QIC
 
 qictab()
 Takes a list of geepack models and produces a table of QIC values the way aictab produces an AIC table
+
+## Installation
+
+The easiest way to install this package is using `devtools`:
+
+```library(devtools)
+```
+
+```
+install_github(repo = "djhocking/qicpack/QICpack")
+```
+
+Let me know if you use this method and have problems. I most recently tested installation with R version 3.3.0 on a Mac (OS X 10.11.6) in RStudio.
