@@ -17,7 +17,8 @@ Takes a list of geepack models and produces a table of QIC values the way aictab
 
 The easiest way to install this package is using `devtools`:
 
-```library(devtools)
+```
+library(devtools)
 ```
 
 ```
